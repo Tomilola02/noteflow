@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+<div class="edit-profile-card">
+  <div class="edit-header">
+    <h2>Edit Profile</h2>
+    <p class="edit-subtext">Update your account information</p>
+  </div>
+
+  <div class="edit-options">
+    <a href="{{ url_for('main.edit_username') }}" class="edit-option-card">
+      <div class="edit-icon">👤</div>
+      <div class="edit-option-text">
+        <h3>Change Username</h3>
+        <p>Update your display name</p>
+      </div>
+      <span class="edit-arrow">→</span>
+    </a>
+
+    <a href="{{ url_for('main.edit_password') }}" class="edit-option-card">
+      <div class="edit-icon">🔒</div>
+      <div class="edit-option-text">
+        <h3>Change Password</h3>
+        <p>Update your password for security</p>
+      </div>
+      <span class="edit-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="edit-footer">
+    <a href="{{ url_for('main.profile') }}" class="btn-secondary">← Back to Profile</a>
+  </div>
+</div>
+{% endblock %}

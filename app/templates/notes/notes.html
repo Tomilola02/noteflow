@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Your Notes{% endblock %}
+
+{% block content %}
+<div class="notes-header">
+  <h2>Your Notes</h2>
+  <a href="{{ url_for('notes.create_note_route') }}" class="btn-primary">+ Add Note</a>
+</div>
+
+<div class="notes-list">
+  {% if notes %}
+    {% for note in notes %}
+      <div class="note-card">
+        <div class="note-content">{{ note[1] }}</div>
+        <div class="note-meta">
+         <small class="note-date">
+  		{% if note[3]!= note[2] %}
+    		Edited: {{ note[3] | datetime }}
+  		{% else %}
+    		Created: {{ note[2] | datetime }}
+  		{% endif %}
+		</small>
+          <div class="note-actions">
+            <a href="{{ url_for('notes.edit_note', note_id=note[0]) }}" class="btn-edit">Edit</a>
+            <form method="POST" action="{{ url_for('notes.delete_note', note_id=note[0]) }}" class="delete-form" onsubmit="return confirm('Delete this note?');">
+              <button type="submit" class="btn-danger">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="empty-state">
+      <p>No notes yet. Create your first note to get started 🚀</p>
+      <a href="{{ url_for('notes.create_note_route') }}" class="btn-primary">Add Your First Note</a>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

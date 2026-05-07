@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="profile-card">
+  <div class="profile-header">
+    <div class="profile-avatar">{{ user[0]|upper }}</div>
+    <div class="profile-info">
+      <h1>{{ user }}</h1>
+    </div>
+  </div>
+
+  <div class="profile-details">
+    <div class="detail-item">
+      <span class="detail-label">Username</span>
+      <span class="detail-value">{{ user }}</span>
+    </div>
+  </div>
+
+  <div class="profile-actions">
+    <a href="{{ url_for('main.edit_profile') }}" class="btn-primary">Edit Profile</a>
+    <a href="{{ url_for('auth.logout') }}" class="btn-secondary">Logout</a>
+    <form action="{{ url_for('main.delete_profile') }}" class="delete-form" method="POST" onsubmit="return confirm('Are you sure you want to delete your account?');">
+      <button type="submit" class="btn-danger">Delete Account</button>
+    </form>
+ </div>
+</div>
+{% endblock %}

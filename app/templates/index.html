@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}NoteHub - Simple Notes App{% endblock %}
+
+{% block nav %}{% endblock %} <!-- Hides the navbar -->
+
+{% block content %}
+<div class="landing-container">
+  <div class="landing-hero">
+    <div class="landing-badge">Built with Flask</div>
+    <h1>NoteHub</h1>
+    <p class="landing-subtext">
+      A clean and simple notes application for capturing your thoughts, 
+      tasks, and ideas. Fast, secure, and accessible anywhere.
+    </p>
+    <div class="landing-actions">
+      <a href="{{ url_for('auth.register') }}" class="btn-primary">Get Started Free</a>
+      <a href="{{ url_for('auth.login') }}" class="btn-secondary">Sign In</a>
+    </div>
+  </div>
+
+  <div class="landing-features">
+    <div class="feature-card">
+      <div class="feature-icon">📝</div>
+      <h3>Create Notes</h3>
+      <p>Quickly write and organize your notes in one place</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔐</div>
+      <h3>Private & Secure</h3>
+      <p>Your notes are protected with secure authentication</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <h3>Responsive Design</h3>
+      <p>Works seamlessly on desktop, tablet, and mobile</p>
+    </div>
+  </div>
+
+  <div class="landing-footer">
+    <p>© 2026 NoteHub. Built for learning and productivity.</p>
+  </div>
+</div>
+{% endblock %}

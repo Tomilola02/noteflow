@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="welcome-card">
+  <div class="welcome-header">
+    <h1>Welcome, {{ name }} 👋</h1>
+    <p class="welcome-subtext">You are logged in and ready to go</p>
+  </div>
+
+  <div class="action-grid">
+    <a href="{{ url_for('main.profile') }}" class="action-card">
+      <div class="action-icon">👤</div>
+      <div class="action-text">
+        <h3>Profile</h3>
+        <p>View your account details</p>
+      </div>
+    </a>
+
+    <a href="{{ url_for('main.edit_profile') }}" class="action-card">
+      <div class="action-icon">✏️</div>
+      <div class="action-text">
+        <h3>Edit Profile</h3>
+        <p>Update your information</p>
+      </div>
+    </a>
+
+    <a href="{{ url_for('notes.notes_r') }}" class="action-card">
+      <div class="action-icon">📝</div>
+      <div class="action-text">
+        <h3>My Notes</h3>
+        <p>Manage your notes</p>
+      </div>
+    </a>
+
+    <a href="{{ url_for('auth.logout') }}" class="action-card danger">
+      <div class="action-icon">🚪</div>
+      <div class="action-text">
+        <h3>Logout</h3>
+        <p>Sign out of your account</p>
+      </div>
+    </a>
+  </div>
+</div>
+{% endblock %}

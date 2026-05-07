@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Create Note - NoteWeb{% endblock %}
+
+{% block content %}
+<div class="edit-form-card">
+  <div class="edit-form-header">
+    <h2>Create New Note</h2>
+    <p class="edit-subtext">What’s on your mind?</p>
+  </div>
+
+  <form method="POST" class="edit-form" id="noteForm">
+    <div class="form-group">
+      <div class="textarea-header">
+        <label for="content">Note Content</label>
+        <span class="char-counter" id="charCounter">0/1000</span>
+      </div>
+      <textarea
+        id="content"
+        name="content"
+        placeholder="Write something..."
+        rows="8"
+        required
+        maxlength="1000"
+        class="note-textarea"
+      ></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-primary full-width">Save Note</button>
+      <a href="{{ url_for('notes.notes_r') }}" class="btn-secondary full-width">Cancel</a>
+    </div>
+  </form>
+</div>
+
+<script>
+const textarea = document.getElementById('content');
+const counter = document.getElementById('charCounter');
+const maxLength = 1000;
+
+function updateCounter() {
+  const currentLength = textarea.value.length;
+  counter.textContent = `${currentLength}/${maxLength}`;
+
+  if (currentLength > maxLength * 0.9) {
+    counter.classList.add('char-counter-warning');
+  } else {
+    counter.classList.remove('char-counter-warning');
+  }
+
+  if (currentLength >= maxLength) {
+    counter.classList.add('char-counter-danger');
+  } else {
+    counter.classList.remove('char-counter-danger');
+  }
+}
+
+textarea.addEventListener('input', updateCounter);
+updateCounter();
+</script>
+{% endblock %}
