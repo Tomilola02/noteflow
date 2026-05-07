@@ -2,8 +2,10 @@
 A basic note-taking web app built with 
 Flask.
 ## What it does
-- Sign up and log in - Add, edit, and 
-delete notes - Change your username and 
+- Sign up and log in
+- Add, edit, and 
+delete notes
+- Change your username and 
 password
 ## How to run it
 1. Install Python requirements: pip install 
